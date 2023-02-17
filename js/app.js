@@ -1,24 +1,42 @@
 // jQuery Area
+
 $(document).ready(function(){
-    // Start Left Sidebar Section
-    // Start Left Sidebar
-    $('.sidebarlinks').click(function(){
-        $('.sidebarlinks').removeClass('currents');
-        $(this).addClass('currents');
-    });
-     // End Left Sidebar
-    // End Left Sidebar Section
-})
+	$('.siderbarlinks').click(function(){
+		$('.siderbarlinks').removeClass('currents');
+
+		$(this).addClass('currents');
+	});
+
+	// Start Users Permission
+	$('.form-check-input').change(function(){
+          if($(this).is(':checked')){
+          	$(this).parent().parent().find('i').addClass('fa-lock-open');
+          	$(this).parent().parent().find('i').removeClass('fa-lock');
+          }else{
+          	$(this).parent().parent().find('i').removeClass('fa-lock-open');
+          	$(this).parent().parent().find('i').addClass('fa-lock');
+          }
+	});
+	// End Users Permission
+
+    // Start Quick Sales 
+    $('#datepicker').datepicker({
+        numberOfMonths: 3
+      });
+});
 
 // Javascript Area
+
+// start chart api
+
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawTitleSubtitle);
 
 function drawTitleSubtitle() {
       var data = new google.visualization.DataTable();
       data.addColumn('timeofday', 'Time of Day');
-      data.addColumn('number', 'Motivation Level');
-      data.addColumn('number', 'Energy Level');
+      data.addColumn('number', 'Male');
+      data.addColumn('number', 'Female');
 
       data.addRows([
         [{v: [8, 0, 0], f: '8 am'}, 1, .25],
@@ -34,6 +52,8 @@ function drawTitleSubtitle() {
       ]);
 
       var options = {
+        height : 210,
+        padding: 10,
         chart: {
           title: 'Viewer Report',
           subtitle: 'Based on a scale of 1 to 10'
@@ -45,12 +65,38 @@ function drawTitleSubtitle() {
             min: [7, 30, 0],
             max: [17, 30, 0]
           }
-        },
-        vAxis: {
-          title: 'Rating (scale of 1-10)'
         }
       };
 
       var materialChart = new google.charts.Bar(document.getElementById('viewerreport'));
       materialChart.draw(data, options);
     }
+ // end chart api
+
+ // Start Sale Analysis
+
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'doughnut',//bar,pie,line,doughnut,radar,polarArea,scatter
+    data: {
+      labels: ['Cash', 'Visa', 'MPU', 'Mobile Banking'],
+      datasets: [{
+        // label: '# of Votes',
+        data: [40,10,20,30],
+        // borderWidth: 1
+      }]
+    },
+    
+  });
+
+   // End Sale Analysis
+
+//    Start Footer 
+const getyear = document.getElementById('getyear');
+const getfullyear = new Date().getFullYear();
+getyear.textContent = getfullyear;
+// End Footer 
+
+
+// 17GG 
