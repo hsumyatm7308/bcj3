@@ -16,6 +16,53 @@ body{
     margin:0;
 }
 
+/* Start Stie Setting */
+.sitesetting{
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+    position: fixed;
+    right: 10px;
+    bottom: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    z-index: 100;
+}
+
+.sitesetting .sitesettings-item{
+    background-color: #f9f9f9;
+    padding: 5px;
+    margin: 10px 0;
+    opacity: .5;
+}
+
+.sitesetting .sitesettings-item:hover{
+    opacity: 1;
+}
+
+.ani-rotates{
+    animation-name: myanirotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes myanirotate{
+    from{
+     transform: rotate(0deg);
+    }
+    to{
+    transform: rotate(1turn);
+    }
+}
+/* End Site Setting  */
+
 .lines1,.lines2,.lines3{
     width:25px;
     height:3px;
@@ -40,7 +87,7 @@ body{
 /* Start Left Sidebar Section */
 /* Start left Sidebar  */
 .sidebars{
-    height:100vh;
+    min-height:100vh;
     background-color:var(--primary-color);
 }
 
@@ -71,6 +118,18 @@ body{
     top:50%;
 
     transform:translateY(-50%);
+}
+
+
+@media(max-width:768px){
+    .sidebars{
+        position: static;
+    
+    }
+
+    .topnavbars{
+        position: static;
+    }
 }
 
 /* End left Sidebar */
@@ -150,6 +209,10 @@ body{
 
 /* End User Permission */
 
-.datepicker{
-	transform: scale(.6);
+/* Start Quick Scales  */
+
+#datepicker{
+	overflow-x: scroll;
 }
+
+/* End Quick Salses  */
